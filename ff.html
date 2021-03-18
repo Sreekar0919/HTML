@@ -1,3 +1,47 @@
+<form method="post" action="//submit.form" onSubmit="return validateForm();">
+<div style="max-width: 400px;">
+</div>
+<div style="padding-bottom: 18px;font-size : 24px;">Mat Feedback</div>
+<div style="padding-bottom: 18px;font-size : 18px;">Please help us improve our mat by filling out this form.</div>
+<div style="display: flex; padding-bottom: 18px;max-width : 450px;">
+<div style=" margin-left: 0; margin-right: 1%; width: 49%;">First name<br/>
+<input type="text" id="data_13" name="data_13" style="max-width: 100%;" class="form-control"/>
+</div>
+<div style=" margin-left: 1%; margin-right: 0; width: 49%;">Last name<br/>
+<input type="text" id="data_14" name="data_14" style="max-width: 100%;" class="form-control"/>
+</div>
+</div><div style="padding-bottom: 18px;">Email<span style="color: red;"> *</span><br/>
+<input type="text" id="data_17" name="data_17" style="max-width : 450px;" class="form-control"/>
+</div>
+<div style="padding-bottom: 18px;">How much would you pay for the mat?<span style="color: red;"> *</span><br/>
+<input type="number" id="data_20" name="data_20" style="max-width : 450px;" class="form-control"/>
+</div>
+<div style="padding-bottom: 18px;">Would you like a workout that includes your family and friends?<span style="color: red;"> *</span><br/>
+<span><input type="radio" id="data_22_0" name="data_22" value="Yes"/> Yes</span><br/>
+<span><input type="radio" id="data_22_1" name="data_22" value="Maybe"/> Maybe</span><br/>
+<span><input type="radio" id="data_22_2" name="data_22" value="No"/> No</span><br/>
+</div>
+<div style="padding-bottom: 18px;">What is in your current exercise routine?<span style="color: red;"> *</span><br/>
+<span><input type="checkbox" id="data_21_0" name="data_21" value="Cardio(Biking, Swimming, etc.)"/> Cardio(Biking, Swimming, etc.)</span><br/>
+<span><input type="checkbox" id="data_21_1" name="data_21" value="Dance"/> Dance</span><br/>
+<span><input type="checkbox" id="data_21_2" name="data_21" value="Yoga"/> Yoga</span><br/>
+<span><input type="checkbox" id="data_21_3" name="data_21" value="Weights"/> Weights</span><br/>
+</div>
+<div style="padding-bottom: 18px;">What is your biggest concern?<span style="color: red;"> *</span><br/>
+<span><input type="checkbox" id="data_24_0" name="data_24" value="Safety"/> Safety</span><br/>
+<span><input type="checkbox" id="data_24_1" name="data_24" value="Maintenance"/> Maintenance</span><br/>
+<span><input type="checkbox" id="data_24_2" name="data_24" value="A Good App"/> A Good App</span><br/>
+</div>
+<div style="padding-bottom: 18px;">Feedback<span style="color: red;"> *</span><br/>
+<textarea id="data_15" false name="data_15" style="max-width : 450px;" rows="6" class="form-control"></textarea>
+</div>
+<div style="padding-bottom: 18px;"><input name="skip_Submit" value="Submit" type="submit"/></div>
+<div>
+<div style="float:right"><a href="https://www.100forms.com" id="lnk100" title="form to email">form to email</a></div>
+<script src="https://www.100forms.com/js/FORMKEY:CN7A9T26QR3H" type="text/javascript"></script>
+</div>
+</form>
+
 <script type="text/javascript">
 function validateForm() {
 if (isEmpty(document.getElementById('data_17').value.trim())) {
