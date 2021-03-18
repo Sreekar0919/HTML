@@ -60,7 +60,7 @@
     $headers .= "Reply-To: $email_address";
     mail($to,$email_subject,$email_body,$headers);
     //redirect to the 'thank you' page
-    header('Location: contact-form-thank-you.html');
+    header('Location: ff.html');
     }
     ?>
     <?php
@@ -73,6 +73,6 @@ if($_POST["submit"]) {
     $mailBody="Name: $sender\nEmail Address: $senderEmail\n\nMessage: $message";
     mail($recipient, $subject, $mailBody);
     sleep(1);
-    header("Location:http://blog.antonyraphel.in/sample/"); // Set here redirect page or destination page
+    header("Location:http://www.ydmat.com/");
 }
 ?>
