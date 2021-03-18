@@ -11,131 +11,68 @@
         <title>Form</title>
         <!-- <link rel="shorcut icon" type="image/png" href="pictures/favicon.png"> <link> -->
     </head>
-<style>    
-* {    
-  box-sizing: border-box;    
-}    
-    
-input[type=text], select, textarea {    
-  width: 100%;    
-  padding: 12px;    
-  border: 1px solid rgb(70, 68, 68);    
-  border-radius: 4px;    
-  resize: vertical;    
-}    
-input[type=email], select, textarea {    
-  width: 100%;    
-  padding: 12px;    
-  border: 1px solid rgb(70, 68, 68);    
-  border-radius: 4px;    
-  resize: vertical;    
-}    
-    
-label {    
-  padding: 12px 12px 12px 0;    
-  display: inline-block;    
-}    
-    
-input[type=submit] {    
-  background-color: rgb(37, 116, 161);    
-  color: white;    
-  padding: 12px 20px;    
-  border: none;    
-  border-radius: 4px;    
-  cursor: pointer;    
-  float: right;    
-}    
-    
-input[type=submit]:hover {    
-  background-color: #45a049;    
-}    
-    
-.container {    
-  border-radius: 5px;    
-  background-color: #f2f2f2;    
-  padding: 20px;    
-}    
-    
-.col-25 {    
-  float: left;    
-  width: 25%;    
-  margin-top: 6px;    
-}    
-    
-.col-75 {    
-  float: left;    
-  width: 75%;    
-  margin-top: 6px;    
-}    
-    
-/* Clear floats after the columns */    
-.row:after {    
-  content: "";    
-  display: table;    
-  clear: both;    
-}    
-    
-/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */    
-</style>    
-</head>    
+
 <body>    
-<h2>FEED BACK FORM</h2>    
-<div class="container">    
-  <form>    
-    <div class="row">    
-      <div class="col-25">    
-        <label for="fname">First Name</label>    
-      </div>    
-      <div class="col-75">    
-        <input type="text" id="fname" name="firstname" placeholder="Your name..">    
-      </div>    
-    </div>    
-    <div class="row">    
-      <div class="col-25">    
-        <label for="lname">Last Name</label>    
-      </div>    
-      <div class="col-75">    
-        <input type="text" id="lname" name="lastname" placeholder="Your last name..">    
-      </div>    
-    </div>    
-    <div class="row">    
-        <div class="col-25">    
-          <label for="email">Mail Id</label>    
-        </div>    
-        <div class="col-75">    
-          <input type="email" id="email" name="mailid" placeholder="Your mail id..">    
-        </div>    
-      </div>    
-    <div class="row">    
-      <div class="col-25">    
-        <label for="country">Country</label>    
-      </div>    
-      <div class="col-75">    
-        <select id="country" name="country">    
-            <option value="none">Select Country</option>    
-          <option value="australia">Australia</option>    
-          <option value="canada">Canada</option>    
-          <option value="usa">USA</option>    
-          <option value="russia">Russia</option>    
-          <option value="japan">Japan</option>    
-          <option value="india">India</option>    
-          <option value="china">China</option>    
-        </select>    
-      </div>    
-    </div>    
-    <div class="row">    
-      <div class="col-25">    
-        <label for="feed_back">Feed Back</label>    
-      </div>    
-      <div class="col-75">    
-        <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>    
-      </div>    
-    </div>    
-    <div class="row">    
-      <input type="submit" value="Submit">    
-    </div>    
-  </form>    
-</div>    
+    <form method="post" name="contact_form"
+    action="contact-form-handler.php">
+        Your Name:
+        <input type="text" name="name">
+        Email Address:
+        <input type="text" name="email">
+        Message:
+        <textarea name="message"></textarea>
+        <input type="submit" value="Submit">
+    </form>
+    <script language="JavaScript">
+    var frmvalidator  = new Validator("contactform");
+    frmvalidator.addValidation("name","req","Please provide your name");
+    frmvalidator.addValidation("email","req","Please provide your email");
+    frmvalidator.addValidation("email","email",
+      "Please enter a valid email address");
+    </script>
+     <?php
+    $errors = '';
+    $myemail = 'sreekar.baddepudi@gmail.com';
+    if(empty($_POST['name'])  ||
+       empty($_POST['email']) ||
+       empty($_POST['message']))
+    {
+        $errors .= "\n Error: all fields are required";
+    }
+    $name = $_POST['name'];
+    $email_address = $_POST['email'];
+    $message = $_POST['message'];
+    if (!preg_match(
+    "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/i",
+    $email_address))
+    {
+        $errors .= "\n Error: Invalid email address";
+    }
     
-</body>    
-</html>    
+    if( empty($errors))
+    {
+    $to = $myemail;
+    $email_subject = "Contact form submission: $name";
+    $email_body = "You have received a new message. ".
+    " Here are the details:\n Name: $name \n ".
+    "Email: $email_address\n Message \n $message";
+    $headers = "From: $myemail\n";
+    $headers .= "Reply-To: $email_address";
+    mail($to,$email_subject,$email_body,$headers);
+    //redirect to the 'thank you' page
+    header('Location: contact-form-thank-you.html');
+    }
+    ?>
+    <?php
+if($_POST["submit"]) {
+    $recipient="yourmailid@domain.com"; //Enter your mail address
+    $subject="Contact from Website"; //Subject 
+    $sender=$_POST["name"];
+    $senderEmail=$_POST["email"];
+    $message=$_POST["comments"];
+    $mailBody="Name: $sender\nEmail Address: $senderEmail\n\nMessage: $message";
+    mail($recipient, $subject, $mailBody);
+    sleep(1);
+    header("Location:http://blog.antonyraphel.in/sample/"); // Set here redirect page or destination page
+}
+?>
