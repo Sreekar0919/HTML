@@ -32,7 +32,7 @@
 <span><input type="checkbox" id="data_24_1" name="data_24" value="Maintenance"/> Maintenance</span><br/>
 <span><input type="checkbox" id="data_24_2" name="data_24" value="A Good App"/> A Good App</span><br/>
 </div>
-<div style="padding-bottom: 18px;">Feedback<span style="color: red;"> *</span><br/>
+<div style="padding-bottom: 18px;">Feedback<br/>
 <textarea id="data_15" false name="data_15" style="max-width : 450px;" rows="6" class="form-control"></textarea>
 </div>
 <div style="padding-bottom: 18px;"><input name="skip_Submit" value="Submit" type="submit"/></div>
@@ -65,10 +65,6 @@ return false;}
 if (!document.getElementById('data_24_0').checked && !document.getElementById('data_24_1').checked && !document.getElementById('data_24_2').checked ) {
 alert('What is your biggest concern? is required!');
 return false;}
-if (isEmpty(document.getElementById('data_15').value.trim())) {
-alert('Feedback is required!');
-return false;
-}
 return true;
 }
 function isEmpty(str) { return (str.length === 0 || !str.trim()); }
